@@ -1,12 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Long Press Demo
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Long Press Demo
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h2> Button Taps: {{ tapCount }}</h2>
-  <ion-button (click)="tapButton()">Tap Me</ion-button>
+    <h2> Button Taps: {{ tapCount }}</h2>
+    <h2> Button Presses: {{ pressCount }}</h2>
+    <h2> Presses State: {{ pressState }}</h2>
+    <ion-button (click)="tapButton()">Tap Me</ion-button>
+    <ion-button (press)="onPress($event)" (pressup)="onPressUp($event)">Press Me</ion-button>
 </ion-content>
