@@ -7,22 +7,35 @@ import {Component} from '@angular/core';
 })
 export class HomePage {
 
-    public tapCount: number = 0;
-    public pressCount: number = 0;
+    public progress: number = 0;
     public pressState: string = "released";
 
-    tapButton() {
-        this.tapCount = this.tapCount + 1;
-    }
+    // Interval function
+    protected interval: any;
+
 
     onPress($event) {
-        console.log("On Press", $event);
+        console.log("onPress", $event);
         this.pressState = 'pressing';
+        this.startInterval();
     }
 
-     onPressUp($event) {
-        console.log("On Pressup", $event);
-         this.pressState = 'released';
-     }
+    onPressUp($event) {
+        console.log("onPressUp", $event);
+        this.pressState = 'released';
+        this.stopInterval();
+    }
+
+    startInterval() {
+        const self = this;
+        this.interval = setInterval(function () {
+            self.progress = self.progress + 1;
+        }, 50);
+    }
+
+    stopInterval() {
+        clearInterval(this.interval);
+    }
+
 
 }
