@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  public tapCount: number = 0;
+
+  tapButton(){
+      this.tapCount = this.tapCount + 1;
+  }
+
 }
